@@ -1,0 +1,31 @@
+{
+  "name": "gitbot",
+  "version": "0.0.1",
+  "description": "Simple discord bot whos aim is to send logs from github to a specific channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syl-Gauthier/gitbot.git"
+  },
+  "keywords": [
+    "bot",
+    "github",
+    "discord",
+    "Daejeon programming"
+  ],
+  "author": "syl-gauthier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Syl-Gauthier/gitbot/issues"
+  },
+  "homepage": "https://github.com/Syl-Gauthier/gitbot#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "discord.js": "^11.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2"
+  }
+}
