@@ -1,9 +1,8 @@
 'use strict';
 
 var gitListener = (function () {
-  var exp = {};
 
-  exp.listen = function (app, callback) {
+  listen = function (app, callback) {
     app.post('/', function (req, res) {
       if (req.headers['user-agent'] === 'GitHub-Hookshot/0878b99') { //TODO addmore security and checking + error handeling
         var message = writeMessage(req);
@@ -12,7 +11,7 @@ var gitListener = (function () {
       else {
         console.log('error: wrong sender');
       }
-      res.send('post request received');
+      res.send(message);
     });
   };
 
@@ -105,8 +104,8 @@ var gitListener = (function () {
     pullMessage.push('commits : (TODO: insert a list of the commits involved)');
     return pullMessage;
   }
-
-  return exp;
+  
+  return {listen};
 })();
 
 module.exports = gitListener;

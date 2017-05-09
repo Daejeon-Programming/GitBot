@@ -5,37 +5,49 @@ var bot = (function () {
   
   const discord = require('discord.js');
   
-  exp.init = function init(config) {
-    this.client = new discord.Client();
-    this.token = config.token;
-    this.guild = config.guild;
-    this.channel= config.channel;
+  var client;
+  var token;
+  var guild;
+  var channel;
+  
+  function init(config) {
+    client = new discord.Client();
     
-    this.client.on('ready', function() {
-      this.guild = this.client.guilds.find('name', this.guild);
-      this.channel = this.guild.channels.find('name', this.channel);
+    client.on('ready', function() {
+      guild = client.guilds.find('name', config.guild);
+      channel = guild.channels.find('name', config.channel);
       console.log('BobbyBot: I am ready!');
     }.bind(this));
     
-    this.client.login(this.token);
+    client.login(config.token);
   }
 
-  exp.setPing = function setPing(bool) { //can be used for test purpose
+  function setPing(bool) { //can be used for test purpose
     if (bool) {
-      this.client.on('message', function(message) {
+      client.on('message', function(message) {
         if (message.content === 'ping') {
           message.reply('pong');
         }
       }.bind(this));
       console.log('ping: on');
     } else {
-      this.client.removeAllListeners('message'); //FIXME might be too much removal
+      client.removeAllListeners('message'); //FIXME might be too much removal
       console.log('ping: off');
     }
   }
 
-  exp.sendMessage = function sendMessage(text) {
-    this.channel.send(text);
+  function sendMessage(text) {
+    channel.send(text);
+  }
+  
+  function setChannel(channel) {
+    channel = guild.channels.find('name', channel);
+  }
+  
+  return {
+    init,
+    setPing,
+    sendMessage,
   }
   
   return exp;
