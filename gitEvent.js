@@ -2,7 +2,7 @@
 
 var gitListener = (function () {
 
-  listen = function (app, callback) {
+  function listen (app, callback) {
     app.post('/', function (req, res) {
       if (req.headers['user-agent'] === 'GitHub-Hookshot/0878b99') { //TODO addmore security and checking + error handeling
         var message = writeMessage(req);
