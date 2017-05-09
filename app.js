@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var bot = require('./bot.js');
 var gitListener = require('./gitEvent.js');
 
-var port = process.env.port || 2012; //TODO set NODE_ENV environement variable
+var port = process.env.PORT || 2012; //TODO set NODE_ENV environement variable
 var botConfig = {
   token: process.env.BOT_TOKEN,
   guild: 'Daejeon programming',
