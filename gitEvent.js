@@ -44,6 +44,11 @@ var gitListener = (function () {
         message.push(payload.sender.login + ' forked ' + payload.repository.full_name + '.');
         message.push(untested); //to be deleted once the message have been used sucessfully
         break;
+      case 'push':
+        message.push(payload.pusher.name + ' pushed in ' + payload.repository.full_name + ':');
+        message.push('commits : (TODO: insert a list of the commits involved)');
+        message.push(untested); //to be deleted once the message have been used sucessfully
+        break;
       case 'pull_request':
         message = message.concat(pullReqMessage(payload));
         message.push(untested); //to be deleted once the message have been used sucessfully
