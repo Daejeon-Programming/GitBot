@@ -55,7 +55,7 @@ var gitListener = (function () {
         break;
       default:
         message.push('No detailed message have been wrote for this kind of event.');
-        message.push('Feel free to write one and to pull a request on ' + '>insert git repo here<');
+        message.push('Feel free to write one and to pull a request on https://github.com/Daejeon-Programming/GitBot');
         message.push(untested); //to be deleted once the message have been used sucessfully
     }
     return message;
